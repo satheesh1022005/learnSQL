@@ -1,0 +1,45 @@
+/* Container Styling */
+.container {
+  padding: 20px;
+}
+
+/* Card Styling */
+.card {
+  border: none;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Title */
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* Card Text */
+.card-text {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Button Styling */
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Empty state message */
+.text-center p {
+  font-size: 1.2rem;
+  color: #888;
+}

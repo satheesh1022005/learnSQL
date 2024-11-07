@@ -16,15 +16,30 @@ const ContestForm = () => {
     const { name, value } = e.target;
     setContestData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/contest/create", contestData);
-      navigate(`/challenge/${response.data.contestId}`);
+      const token = localStorage.getItem("token");
+      const response = await axios.post(
+        "http://localhost:3000/api/contest/create",
+        contestData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response);
+      if (response.data && response.data.contestId) {
+        console.log("Contest created with ID:", response.data.contestId);
+        navigate(`/challenge/${response.data.contestId}`);
+      } else {
+        console.error("contestId is missing in response:", response.data);
+      }
     } catch (error) {
       console.error("Error creating contest:", error);
     }
@@ -68,8 +83,6 @@ const ContestForm = () => {
         onChange={handleChange}
         required
       />
-
-    
 
       <button type="submit">Get Started</button>
     </form>

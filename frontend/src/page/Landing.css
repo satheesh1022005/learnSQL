@@ -1,0 +1,142 @@
+/* Ensure full page height */
+.landing-container {
+  display: flex;
+  height: 100vh;
+  width: 100wh;
+}
+
+.sidebar {
+  width: 100px;
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px;
+  min-width: 100px; /* Ensures sidebar keeps a minimum width */
+}
+
+.logo {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  font-size: 0.8em;
+  color: white;
+  text-decoration: none;
+}
+
+.main {
+  flex: 1;
+  background-color: #ecf0f1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensures the main content area takes the full height */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header input {
+  padding: 10px;
+  width: 300px;
+}
+
+.header-right a {
+  margin-left: 20px;
+  color: #34495e;
+}
+
+.content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  flex-grow: 1; /* Ensures the content area takes available space */
+}
+
+.dashboard {
+  margin-top: 20px;
+}
+
+.dashboard-title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.user-profile {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.user-image {
+  width: 50px;
+  height: 50px;
+  background-color: #bdc3c7;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-item {
+  background-color: #3498db;
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  flex: 1;
+  margin: 0 10px;
+  text-align: center;
+}
+
+/* Floating bot icon styles */
+.bot-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px; /* Updated to 'right' instead of 'left' */
+  background-color: #3498db;
+  color: white;
+  border-radius: 50%;
+  font-size: 30px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.bot-icon:hover {
+  background-color: #2980b9;
+}
+.doubt-icon {
+  position: fixed;
+  bottom: 140px;
+  right: 20px; /* Updated to 'right' instead of 'left' */
+  background-color: #3498db;
+  color: white;
+  border-radius: 50%;
+  font-size: 30px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}

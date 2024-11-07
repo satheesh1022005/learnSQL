@@ -4,10 +4,10 @@ import "./ChallengeForm.css";
 import { useNavigate, useParams } from "react-router-dom";
 
 const ChallengeForm = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const { contestId } = useParams();
   const [file, setFile] = useState(null);
-  const [outputFile, setOutputFile] = useState(null);  // For the output CSV file
+  const [outputFile, setOutputFile] = useState(null); // For the output CSV file
   const [tableName, setTableName] = useState("");
   const [attributes, setAttributes] = useState("");
   const [question, setQuestion] = useState("");
@@ -20,13 +20,20 @@ const ChallengeForm = () => {
   };
 
   const handleOutputFileChange = (e) => {
-    setOutputFile(e.target.files[0]); 
+    setOutputFile(e.target.files[0]);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!file || !tableName || !attributes || !question || !description || !outputFile) {
+    if (
+      !file ||
+      !tableName ||
+      !attributes ||
+      !question ||
+      !description ||
+      !outputFile
+    ) {
       alert("Please provide all required fields.");
       return;
     }
@@ -37,7 +44,10 @@ const ChallengeForm = () => {
     formData.append("attributes", attributes);
 
     try {
-      const response = await axios.post("http://localhost:5000/api/uploadExcel", formData);
+      const response = await axios.post(
+        "http://localhost:3000/api/uploadExcel",
+        formData
+      );
       console.log("File uploaded and data inserted:", response.data);
 
       const outputFormData = new FormData();
@@ -47,19 +57,17 @@ const ChallengeForm = () => {
       outputFormData.append("description", description);
       outputFormData.append("hints", hints);
       outputFormData.append("tags", tags);
-      outputFormData.append("outputFile", outputFile);  // Attach the file
-      
+      outputFormData.append("outputFile", outputFile); // Attach the file
+
       const respons = await axios.post(
-        `http://localhost:5000/api/challenge/${contestId}/createChallenge`,
+        `http://localhost:3000/api/challenge/${contestId}/createChallenge`,
         outputFormData,
         {
-          headers: { 'Content-Type': 'multipart/form-data' }
+          headers: { "Content-Type": "multipart/form-data" },
         }
       );
       console.log("Challenge and output data saved:", respons.data);
-      navigate("/home")
-
-
+      navigate("/home");
     } catch (error) {
       console.error("Error uploading file:", error);
     }
@@ -103,7 +111,6 @@ const ChallengeForm = () => {
         onChange={(e) => setTags(e.target.value)}
       />
 
-
       <label>Table Name *</label>
       <input
         type="text"
@@ -123,31 +130,35 @@ const ChallengeForm = () => {
         required
       />
 
-  <label htmlFor="file-input">Upload CSV File *</label>
-  <input
-    type="file"
-    id="file-input"
-    accept=".csv"
-    onChange={handleFileChange}
-    required
-  />
-  <label className="upload-button" htmlFor="file-input">Choose File</label>
+      <label htmlFor="file-input">Upload CSV File *</label>
+      <input
+        type="file"
+        id="file-input"
+        accept=".csv"
+        onChange={handleFileChange}
+        required
+      />
+      <label className="upload-button" htmlFor="file-input">
+        Choose File
+      </label>
 
-  <label htmlFor="output-file-input">Upload Output CSV File *</label>
-  <input
-    type="file"
-    id="output-file-input"
-    accept=".csv"
-    onChange={handleOutputFileChange}
-    required
-  />
-  <label className="upload-button" htmlFor="output-file-input">Choose File</label>
+      <label htmlFor="output-file-input">Upload Output CSV File *</label>
+      <input
+        type="file"
+        id="output-file-input"
+        accept=".csv"
+        onChange={handleOutputFileChange}
+        required
+      />
+      <label className="upload-button" htmlFor="output-file-input">
+        Choose File
+      </label>
 
-      <button type="submit" className="add-button">Upload and Insert Data</button>
+      <button type="submit" className="add-button">
+        Upload and Insert Data
+      </button>
     </form>
   );
 };
 
 export default ChallengeForm;
-
-
