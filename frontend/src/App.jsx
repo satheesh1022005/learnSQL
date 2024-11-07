@@ -12,7 +12,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import AddTask from './components/task/AddTask';
 import ContestForm from "./components/ContestForm";
 import ChallengeForm from "./components/ChallengeForm";
-
+import ViewTask from './components/task/ViewTask';
+import StudentTest from './page/StudentTest';
+import Sheet from './components/Interview/Sheet';
 function App() {
   return (
     <>
@@ -28,6 +30,9 @@ function App() {
           <Route path='/createTask' element={<AddTask/>}/>
           <Route path="/contest" element={<ContestForm />} />
           <Route path="/challenge/:contestId" element={<ChallengeForm />} />
+          <Route path="/view" element={<ViewTask/>} />
+          <Route path="/test" element={<StudentTest/>} />
+          <Route path="/sheet" element={<Sheet/>} />
         </Routes>
       </Router>
     </>

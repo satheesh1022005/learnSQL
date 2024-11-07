@@ -1,0 +1,105 @@
+.sheet-container {
+  padding: 20px;
+  background-color: #f4f4f9;
+}
+
+.sheet-header {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.problem-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+.problem-table th,
+.problem-table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.problem-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.problem-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Add styles for checkbox and star icons */
+.checkbox-btn {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.revision-mark {
+  font-size: 1.5em;
+  color: #f5a623;
+}
+
+.revision-mark.active {
+  color: #f1c40f;
+}
+
+.progress-bar-container {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: "Arial", sans-serif;
+  text-align: center;
+}
+
+.progress-label {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  position: relative;
+  height: 30px;
+  width: 100%;
+  background-color: #f0f0f0;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  transition: width 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.progress-text {
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.progress-bar:hover .progress {
+  background-color: #4caf50; /* Darker shade when hovered */
+}

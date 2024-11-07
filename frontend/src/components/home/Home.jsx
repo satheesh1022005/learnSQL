@@ -63,7 +63,29 @@ const Home = () => {
                                         </button>
                                     </section>
                                 )}
-                                {user.role === 'student'}
+                                {user.role === 'student' && (
+                                    <section>
+                                        <button
+                                        className="btn btn-primary mt-3 px-4 py-2"
+                                        onClick={() => navigate("/view")}
+                                    >
+                                        ViewTask
+                                    </button>
+                                    <button
+                                        className="btn btn-primary mt-3 px-4 py-2"
+                                        onClick={() => navigate("/test")}
+                                    >
+                                        ViewContest
+                                    </button>
+                                    <button
+                                        className="btn btn-primary mt-3 px-4 py-2"
+                                        onClick={() => navigate("/sheet")}
+                                    >
+                                        Interview Sheet
+                                    </button>
+                                    </section>
+
+                                )}
                             </>
                         )
                     }

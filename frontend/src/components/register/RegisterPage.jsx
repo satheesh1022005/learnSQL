@@ -24,7 +24,7 @@ function RegisterPage() {
         }
         else{
             toast("Register Succesfully",{type:'success',autoClose: 2000,})
-            navigate('/home')
+            navigate('/login')
         }
         console.log(resStatus)
     }
