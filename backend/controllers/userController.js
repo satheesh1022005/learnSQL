@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const College = require("../models/College");
 const Faculty = require('../models/Faculty');
+const mongoose=require('mongoose');
 const Student = require('../models/Student');
 const SECRET_KEY = '12345';
 
@@ -29,7 +30,7 @@ exports.register = async (req, res) => {
 
         const token = jwt.sign({ id: newUser._id, email: newUser.adminCredentials.email, role: 'college' }, SECRET_KEY, { expiresIn: '1h' });
 
-        res.status(201).json({ message: 'User registered successfully!', token });
+        res.status(201).json({ message: 'User registered successfully!', token ,user:newUser});
     } catch (err) {
         console.log(err)
         res.status(500).json({ error: 'Internal server error' });
@@ -143,6 +144,7 @@ exports.createStudent = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const newUser = new Student({
+            faculty:req.user.id,
             name: username,
             email: email,
             password: hashedPassword,
@@ -189,6 +191,38 @@ exports.assignTasks = async (req, res) => {
         } else {
             return res.status(200).json({ message: 'No new tasks to add' });
         }
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+exports.viewTasks = async (req, res) => {
+    try {
+        if (req.user.role !== 'student') {
+            return res.status(400).json({ message: 'Access Denied' });
+        }
+        console.log(req.user)
+        const student=await Student.findById(req.user.id);
+        const faculty=await Faculty.findById(student.faculty);
+        console.log(faculty.tasks)
+        return res.json({tasks:faculty.tasks})
+
 
     } catch (err) {
         console.log(err);
