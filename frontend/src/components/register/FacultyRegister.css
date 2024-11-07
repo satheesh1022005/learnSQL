@@ -1,0 +1,24 @@
+/* FacultyRegister.css */
+.card {
+    border-radius: 12px;
+    background-color: #f8f9fa;
+  }
+  
+  .card h3 {
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .form-label {
+    font-weight: 600;
+  }
+  
+  .form-control {
+    border-radius: 8px;
+  }
+  
+  .btn-primary {
+    font-weight: bold;
+    border-radius: 8px;
+  }
+  
