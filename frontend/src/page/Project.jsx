@@ -3,7 +3,7 @@ import DatabaseDesign from "../components/DatabaseDesign";
 import EntityTypes from "../components/EntityTypes"; // Adjust the path as necessary
 import SqlRelationships from "../components/SqlRelationships";
 import EntityAttributes from "../components/EntityAttributes";
-import NormalizationProcess from "../components/NormalizationProcess.JSX";
+import NormalizationProcess from "../components/NormalizationProcess";
 import "./Project.css";
 
 const topicsWithIcons = [
